@@ -13,6 +13,18 @@ const Formulario =({pacientes,setPacientes, paciente})=> {
 
   const [error, setError] = useState(false);
 
+  useEffect(() => {
+      if(Object.keys(paciente).length > 0){
+        setNombre(paciente.nombre);
+        setPropietario(paciente.propietario);
+        setEmail(paciente.email)
+        setFecha(paciente.fecha)
+        setSintomas(paciente.sintomas)
+      }
+    },[
+      paciente
+  ])
+
   const generarId = () =>{
     const random = Math.random().toString(36).substr(2);
     const fecha = Date.now().toString(36);
