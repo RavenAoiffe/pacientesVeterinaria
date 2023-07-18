@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import Pacientes from './Pacientes';
 import Error from './Error';
 
-const Formulario =({pacientes,setPacientes, paciente})=> {
+const Formulario =({pacientes,setPacientes, paciente, setPaciente})=> {
   
   //definir el estado del componente
   const [nombre, setNombre] = useState('');
@@ -59,14 +59,12 @@ const Formulario =({pacientes,setPacientes, paciente})=> {
       );
 
       setPacientes(pacientesActualizados)
-      console.log('desde el if' + objetoPaciente.id)
+      setPaciente({})
    }  
    else{
     // nuevo registro*/
     objetoPaciente.id = generarId();
     setPacientes([...pacientes,objetoPaciente]);
-    console.log('desde el else ' + objetoPaciente.id)
-
    }
 
     //Reiniciar el form
