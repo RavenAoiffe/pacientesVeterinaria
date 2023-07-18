@@ -5,9 +5,17 @@ import ListadoPacientes from "./components/ListadoPacientes";
 
 function App() {
 
-  const [pacientes, setPacientes ] = useState([]);
+ const INITIAL = JSON.parse(localStorage.getItem('pacientes')) ?? [];
+
+  const [pacientes, setPacientes ] = useState(INITIAL);
 
   const [paciente, setPaciente] = useState({});
+
+  //Use effect localStorage
+  useEffect(() =>{
+      localStorage.setItem('pacientes', JSON.stringify(pacientes))
+  }, [pacientes])
+
 
   const eliminarPaciente = id =>{
     //console.log('eliminando paciente' + id)
